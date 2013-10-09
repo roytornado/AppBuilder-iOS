@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "AppBuilder-ios"
+  s.name         = "AppBuilder-iOS"
   s.version      = "1.0"
   s.summary      = "MidlandCalc includes the common components of Mortgage Calculator."
   s.homepage     = "https://github.com/roytornado/AppBuilder-iOS"
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '5.1'
   s.source_files = 'Lib/**/*.{h,m}'
   s.framework    = 'QuartzCore'
-  s.resources    = '/Library/Res/**'
+  s.resources    = 'Lib/Res/**'
 
   s.requires_arc = true
 end
