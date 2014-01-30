@@ -5,9 +5,11 @@
 
 @interface InfoInputNext : NSObject <InfoBase>
 
-@property NSString  *key;
-@property NSString  *value;
-@property NSString  *tag;
+@property NSString	*key;
+@property NSString	*value;
+@property NSString	*tag;
+@property UIColor	*colorKey;
+@property UIColor	*colorValue;
 
 + (InfoInputNext *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value WithTag:(NSString *)_tag;
 
