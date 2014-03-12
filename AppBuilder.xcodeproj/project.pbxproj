@@ -85,6 +85,7 @@
 		56A318A91803DD1700E45773 /* BaseXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318701803DD1700E45773 /* BaseXMLHandler.m */; };
 		56A318AA1803DD1700E45773 /* SimpleXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318721803DD1700E45773 /* SimpleXMLHandler.m */; };
 		56A318AD1803DFCC00E45773 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318AC1803DFCC00E45773 /* App.m */; };
+		56B5860718D00056007E5DDE /* SuperUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5860618D00056007E5DDE /* SuperUITextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -211,6 +212,8 @@
 		56A318721803DD1700E45773 /* SimpleXMLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleXMLHandler.m; sourceTree = "<group>"; };
 		56A318AB1803DFCC00E45773 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		56A318AC1803DFCC00E45773 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
+		56B5860518D00056007E5DDE /* SuperUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperUITextField.h; sourceTree = "<group>"; };
+		56B5860618D00056007E5DDE /* SuperUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperUITextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +432,8 @@
 				56A3186B1803DD1700E45773 /* SuperUIImageView.m */,
 				56A3186C1803DD1700E45773 /* SuperUILabel.h */,
 				56A3186D1803DD1700E45773 /* SuperUILabel.m */,
+				56B5860518D00056007E5DDE /* SuperUITextField.h */,
+				56B5860618D00056007E5DDE /* SuperUITextField.m */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 				5626CC51180FDE15009049E1 /* InfoImage.m in Sources */,
 				56A318901803DD1700E45773 /* Crypto.m in Sources */,
 				56A318A11803DD1700E45773 /* Validator.m in Sources */,
+				56B5860718D00056007E5DDE /* SuperUITextField.m in Sources */,
 				56A318A01803DD1700E45773 /* UIImage-Extensions.m in Sources */,
 				56A318A41803DD1700E45773 /* InputText.m in Sources */,
 				56A318921803DD1700E45773 /* CSLinearLayoutView.m in Sources */,
