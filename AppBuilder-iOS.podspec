@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AppBuilder-iOS"
-  s.version      = "1.1"
+  s.version      = "1.2"
   s.summary      = "AppBuilder-iOS"
   s.homepage     = "https://github.com/roytornado/AppBuilder-iOS"
   s.license      = { :type => 'Custom', :text => 'Copyright (C) Roynal Next. All Rights Reserved.' }
