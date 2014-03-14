@@ -9,11 +9,19 @@
 #import "InfoInputNext.h"
 #import "InfoInputText.h"
 
+@protocol InfoGroupDelegate
+
+- (UIView *)sectionHeaderView:(InfoSection *)section;
+- (void)onClick:(NSString *)tag;
+
+@end
+
 @interface InfoGroup : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-@property NSMutableArray    *sections;
-@property UITableView       *table;
-@property id                delegate;
+@property NSMutableArray *sections;
+@property UITableView *table;
+@property id delegate;
+
 
 + (InfoGroup *)createWithTable:(UITableView *)table;
 
