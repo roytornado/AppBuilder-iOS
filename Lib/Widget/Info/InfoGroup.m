@@ -69,6 +69,14 @@
 	return nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if ([delegate respondsToSelector:@selector(sectionHeaderView:)]) {
+		UIView *view =  [delegate performSelector:@selector(sectionHeaderView:) withObject:[sections objectAtIndex:section]];
+		return view.bounds.size.height;
+	}
+	return 40;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	if ([delegate respondsToSelector:@selector(sectionHeaderView:)]) {
 		return [delegate performSelector:@selector(sectionHeaderView:) withObject:[sections objectAtIndex:section]];
@@ -90,7 +98,18 @@
 	return headerView;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+	if ([delegate respondsToSelector:@selector(sectionFooterView:)]) {
+		UIView *view =  [delegate performSelector:@selector(sectionFooterView:) withObject:[sections objectAtIndex:section]];
+		return view.bounds.size.height;
+	}
+	return 40;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+	if ([delegate respondsToSelector:@selector(sectionFooterView:)]) {
+		return [delegate performSelector:@selector(sectionFooterView:) withObject:[sections objectAtIndex:section]];
+	}
 	NSString *footerText = [self tableView:tableView titleForFooterInSection:section];
 
 	if (!footerText) {

@@ -12,6 +12,7 @@
 @protocol InfoGroupDelegate
 
 - (UIView *)sectionHeaderView:(InfoSection *)section;
+- (UIView *)sectionFooterView:(InfoSection *)section;
 - (void)onClick:(NSString *)tag;
 
 @end
@@ -24,8 +25,6 @@
 
 
 + (InfoGroup *)createWithTable:(UITableView *)table;
-
-- (void)handleExtraFields:(NSMutableArray *)list;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 
