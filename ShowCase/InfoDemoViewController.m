@@ -8,16 +8,17 @@
 
 #import "InfoDemoViewController.h"
 #import "InfoGroup.h"
+#import "KGModal.h"
 
 @implementation InfoDemoViewController {
-	InfoGroup *infoGroup;
-	InfoSection *infoSection1;
-	InfoSection *infoSection2;
+	InfoGroup* infoGroup;
+	InfoSection* infoSection1;
+	InfoSection* infoSection2;
 
-	InfoInputText *infoInput1;
-	InfoTextH *infoText1;
-	InfoTextV *infoText2;
-	InfoInputNext *infoNext1;
+	InfoInputText* infoInput1;
+	InfoTextH* infoText1;
+	InfoTextV* infoText2;
+	InfoInputNext* infoNext1;
 }
 
 @synthesize table;
@@ -42,15 +43,23 @@
 	[InfoTextH createToSection:infoSection2 WithKey:@"Static Text" WithValue:@"Static Value"];
 
 	[table reloadData];
+
+	UITextView* popView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 180, 80)];
+	popView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+	popView.textAlignment = NSTextAlignmentCenter;
+	popView.textColor = [UIColor whiteColor];
+	popView.text = @"Hello";
+
+	[[KGModal sharedInstance] showWithContentView:popView andAnimated:YES];
 }
 
-- (UIView *)sectionHeaderView:(InfoSection *)section {
-	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, table.bounds.size.width, 20)];
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, headerView.frame.size.width - 16, 20)];
-	label.text              = section.header;
-	label.font              = [UIFont boldSystemFontOfSize:14];
+- (UIView*)sectionHeaderView:(InfoSection*)section {
+	UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, table.bounds.size.width, 20)];
+	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, headerView.frame.size.width - 16, 20)];
+	label.text = section.header;
+	label.font = [UIFont boldSystemFontOfSize:14];
 	label.textColor = [UIColor blueColor];
-	label.backgroundColor   = [UIColor clearColor];
+	label.backgroundColor = [UIColor clearColor];
 	[headerView addSubview:label];
 	return headerView;
 }
