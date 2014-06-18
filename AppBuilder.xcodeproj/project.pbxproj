@@ -59,8 +59,6 @@
 		56A3188E1803DD1700E45773 /* whiteButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A318381803DD1700E45773 /* whiteButtonHighlight.png */; };
 		56A3188F1803DD1700E45773 /* whiteButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A318391803DD1700E45773 /* whiteButtonHighlight@2x.png */; };
 		56A318901803DD1700E45773 /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A3183C1803DD1700E45773 /* Crypto.m */; };
-		56A318911803DD1700E45773 /* CSLinearLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A3183E1803DD1700E45773 /* CSLinearLayoutItem.m */; };
-		56A318921803DD1700E45773 /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318401803DD1700E45773 /* CSLinearLayoutView.m */; };
 		56A318931803DD1700E45773 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318421803DD1700E45773 /* CustomBadge.m */; };
 		56A318941803DD1700E45773 /* DateTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318441803DD1700E45773 /* DateTimeUtil.m */; };
 		56A318951803DD1700E45773 /* Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318461803DD1700E45773 /* Formatter.m */; };
@@ -86,6 +84,10 @@
 		56A318AA1803DD1700E45773 /* SimpleXMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318721803DD1700E45773 /* SimpleXMLHandler.m */; };
 		56A318AD1803DFCC00E45773 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A318AC1803DFCC00E45773 /* App.m */; };
 		56B5860718D00056007E5DDE /* SuperUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B5860618D00056007E5DDE /* SuperUITextField.m */; };
+		56C2BBB2195151A90053A420 /* SuperUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2BBB0195151A90053A420 /* SuperUIButton.m */; };
+		56C2BBB51951520A0053A420 /* UIView+FrameUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2BBB41951520A0053A420 /* UIView+FrameUtil.m */; };
+		56C2BBB8195152590053A420 /* UIImage+HaxegonMasking.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2BBB6195152590053A420 /* UIImage+HaxegonMasking.m */; };
+		56C2BBBB195152E20053A420 /* CalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2BBB9195152E20053A420 /* CalUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,10 +162,6 @@
 		56A318391803DD1700E45773 /* whiteButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		56A3183B1803DD1700E45773 /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
 		56A3183C1803DD1700E45773 /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
-		56A3183D1803DD1700E45773 /* CSLinearLayoutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLinearLayoutItem.h; sourceTree = "<group>"; };
-		56A3183E1803DD1700E45773 /* CSLinearLayoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLinearLayoutItem.m; sourceTree = "<group>"; };
-		56A3183F1803DD1700E45773 /* CSLinearLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLinearLayoutView.h; sourceTree = "<group>"; };
-		56A318401803DD1700E45773 /* CSLinearLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLinearLayoutView.m; sourceTree = "<group>"; };
 		56A318411803DD1700E45773 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
 		56A318421803DD1700E45773 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
 		56A318431803DD1700E45773 /* DateTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeUtil.h; sourceTree = "<group>"; };
@@ -214,6 +212,14 @@
 		56A318AC1803DFCC00E45773 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		56B5860518D00056007E5DDE /* SuperUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperUITextField.h; sourceTree = "<group>"; };
 		56B5860618D00056007E5DDE /* SuperUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperUITextField.m; sourceTree = "<group>"; };
+		56C2BBB0195151A90053A420 /* SuperUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperUIButton.m; sourceTree = "<group>"; };
+		56C2BBB1195151A90053A420 /* SuperUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperUIButton.h; sourceTree = "<group>"; };
+		56C2BBB31951520A0053A420 /* UIView+FrameUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameUtil.h"; sourceTree = "<group>"; };
+		56C2BBB41951520A0053A420 /* UIView+FrameUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameUtil.m"; sourceTree = "<group>"; };
+		56C2BBB6195152590053A420 /* UIImage+HaxegonMasking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HaxegonMasking.m"; sourceTree = "<group>"; };
+		56C2BBB7195152590053A420 /* UIImage+HaxegonMasking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HaxegonMasking.h"; sourceTree = "<group>"; };
+		56C2BBB9195152E20053A420 /* CalUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalUtil.m; sourceTree = "<group>"; };
+		56C2BBBA195152E20053A420 /* CalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,12 +380,10 @@
 		56A3183A1803DD1700E45773 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				56C2BBB9195152E20053A420 /* CalUtil.m */,
+				56C2BBBA195152E20053A420 /* CalUtil.h */,
 				56A3183B1803DD1700E45773 /* Crypto.h */,
 				56A3183C1803DD1700E45773 /* Crypto.m */,
-				56A3183D1803DD1700E45773 /* CSLinearLayoutItem.h */,
-				56A3183E1803DD1700E45773 /* CSLinearLayoutItem.m */,
-				56A3183F1803DD1700E45773 /* CSLinearLayoutView.h */,
-				56A318401803DD1700E45773 /* CSLinearLayoutView.m */,
 				56A318411803DD1700E45773 /* CustomBadge.h */,
 				56A318421803DD1700E45773 /* CustomBadge.m */,
 				56A318431803DD1700E45773 /* DateTimeUtil.h */,
@@ -419,6 +423,12 @@
 		56A318611803DD1700E45773 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				56C2BBB6195152590053A420 /* UIImage+HaxegonMasking.m */,
+				56C2BBB7195152590053A420 /* UIImage+HaxegonMasking.h */,
+				56C2BBB31951520A0053A420 /* UIView+FrameUtil.h */,
+				56C2BBB41951520A0053A420 /* UIView+FrameUtil.m */,
+				56C2BBB0195151A90053A420 /* SuperUIButton.m */,
+				56C2BBB1195151A90053A420 /* SuperUIButton.h */,
 				5626CC3B180FDE15009049E1 /* Info */,
 				56A318621803DD1700E45773 /* InputManager.h */,
 				56A318631803DD1700E45773 /* InputManager.m */,
@@ -553,7 +563,6 @@
 				56B5860718D00056007E5DDE /* SuperUITextField.m in Sources */,
 				56A318A01803DD1700E45773 /* UIImage-Extensions.m in Sources */,
 				56A318A41803DD1700E45773 /* InputText.m in Sources */,
-				56A318921803DD1700E45773 /* CSLinearLayoutView.m in Sources */,
 				56A318A51803DD1700E45773 /* LeveyPopListView.m in Sources */,
 				56A3189B1803DD1700E45773 /* NSData+CommonCrypto.m in Sources */,
 				56A318A71803DD1700E45773 /* SuperUIImageView.m in Sources */,
@@ -565,11 +574,14 @@
 				56A3189D1803DD1700E45773 /* NSString+Base64.m in Sources */,
 				56A318981803DD1700E45773 /* KGModal.m in Sources */,
 				56A318951803DD1700E45773 /* Formatter.m in Sources */,
+				56C2BBB8195152590053A420 /* UIImage+HaxegonMasking.m in Sources */,
 				5626CC4F180FDE15009049E1 /* InfoButton.m in Sources */,
 				56A318AD1803DFCC00E45773 /* App.m in Sources */,
 				5626CC50180FDE15009049E1 /* InfoGroup.m in Sources */,
 				56A318A81803DD1700E45773 /* SuperUILabel.m in Sources */,
 				56A317F41803DC6B00E45773 /* AppDelegate.m in Sources */,
+				56C2BBB2195151A90053A420 /* SuperUIButton.m in Sources */,
+				56C2BBB51951520A0053A420 /* UIView+FrameUtil.m in Sources */,
 				56A318961803DD1700E45773 /* HashUtil.m in Sources */,
 				56A318941803DD1700E45773 /* DateTimeUtil.m in Sources */,
 				5626CC56180FDE15009049E1 /* InfoTextV.m in Sources */,
@@ -583,9 +595,9 @@
 				56A318971803DD1700E45773 /* ImgUtil.m in Sources */,
 				56A317F01803DC6B00E45773 /* main.m in Sources */,
 				56A3189E1803DD1700E45773 /* TPKeyboardAvoidingScrollView.m in Sources */,
-				56A318911803DD1700E45773 /* CSLinearLayoutItem.m in Sources */,
 				5626CC5B180FE822009049E1 /* FullSizeImageCell.m in Sources */,
 				5626CC53180FDE15009049E1 /* InfoInputText.m in Sources */,
+				56C2BBBB195152E20053A420 /* CalUtil.m in Sources */,
 				5626CC57180FDE15009049E1 /* InputTextCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +714,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppBuilder/AppBuilder-Prefix.pch";
 				INFOPLIST_FILE = "AppBuilder/AppBuilder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -715,6 +728,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppBuilder/AppBuilder-Prefix.pch";
 				INFOPLIST_FILE = "AppBuilder/AppBuilder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
