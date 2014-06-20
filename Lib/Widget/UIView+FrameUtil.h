@@ -2,6 +2,11 @@
 
 @interface UIView (FrameUtil)
 
-- (CGPoint) frameEndPoint;
+- (CGPoint)frameEndPoint;
+
+- (CGFloat)width;
+- (CGFloat)height;
+
+- (void)setOrigin:(CGPoint)point;
 
 @end
