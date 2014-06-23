@@ -20,4 +20,22 @@
 	self.frame = newFrame;
 }
 
+- (void)centerX:(UIView*)parent {
+	[self setOrigin:CGPointMake(parent.width / 2 - self.width / 2, self.frame.origin.y)];
+}
+
+- (void)centerY:(UIView*)parent {
+	[self setOrigin:CGPointMake(self.frame.origin.x, parent.height / 2 - self.height / 2)];
+}
+
+- (void)addSubviewsFromEndV:(CGFloat)pad views:(NSArray*)views {
+	CGFloat curY = self.bounds.size.height;
+	for(UIView* view in views){
+		curY -= pad;
+		[self addSubview:view];
+		[view setOrigin:CGPointMake(view.frame.origin.x, curY)];
+		curY -= view.frame.size.height;
+	}
+}
+
 @end
