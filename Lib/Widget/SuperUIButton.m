@@ -26,6 +26,7 @@
 		[self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
 		self.style = SuperUIButtonStyleRect;
 		self.imgPos = SuperUIButtonImgPosLeft;
+		self.insetSize = 1;
 		self.backgroundColor = [UIColor clearColor];
 		self.cornerRadius = 0;
 		self.bgColor = [UIColor clearColor];
@@ -69,7 +70,7 @@
 	[self setTitleColor:textColor forState:UIControlStateNormal];
 	self.backgroundColor = [UIColor clearColor];
 	if(self.style == SuperUIButtonStyleRect){
-		CGRect box = CGRectInset(self.bounds, 1, 1);
+		CGRect box = CGRectInset(self.bounds, self.insetSize, self.insetSize);
 		UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:box cornerRadius:cornerRadius];
 		path.lineWidth = borderWidth;
 		[borderColor setStroke];
@@ -85,7 +86,7 @@
 		[hexagonPath fill];
 	}
 	else if(self.style == SuperUIButtonStyleCircle){
-		CGRect box = CGRectInset(self.bounds, 1, 1);
+		CGRect box = CGRectInset(self.bounds, self.insetSize, self.insetSize);
 		UIBezierPath* ballBezierPath = [UIBezierPath bezierPathWithOvalInRect:box];
 		[borderColor setStroke];
 		[ballBezierPath stroke];

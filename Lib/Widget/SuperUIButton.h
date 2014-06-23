@@ -20,6 +20,7 @@ typedef NS_ENUM (NSInteger, SuperUIButtonImgPos){
 
 @property SuperUIButtonStyle style;
 @property SuperUIButtonImgPos imgPos;
+@property CGFloat insetSize;
 @property UIColor* bgColor;
 @property UIColor* borderColor;
 @property CGFloat borderWidth;
