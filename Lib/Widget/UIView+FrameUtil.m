@@ -45,6 +45,10 @@
 		[view setOrigin:CGPointMake(view.frame.origin.x, curY)];
 		curY += view.frame.size.height;
 	}
+	if([self isKindOfClass:[UIScrollView class]]){
+		UIScrollView* scrollView = (UIScrollView*)self;
+		[scrollView setContentSize:CGSizeMake(320, curY)];
+	}
 }
 
 - (void)addSubviewsFromEndV:(CGFloat)pad views:(NSArray*)views {
@@ -58,6 +62,26 @@
 		}
 		[view setOrigin:CGPointMake(view.frame.origin.x, curY)];
 	}
+}
+
+- (void)addSubviewsFromStartH:(CGFloat)pad views:(NSArray*)views {
+	CGFloat curX = 0;
+	for(UIView* view in views){
+		curX += pad;
+		if(!view.superview){
+			[view removeFromSuperview];
+			[self addSubview:view];
+		}
+		[view setOrigin:CGPointMake(curX, view.frame.origin.y)];
+		curX += view.width;
+	}
+}
+
+- (UIView*)wrapWithPadding:(UIEdgeInsets)padding {
+	UIView* container = [[UIView alloc]initWithFrame:self.bounds];
+	[container addSubview:self];
+	self.frame = CGRectMake(padding.left, padding.top, self.width - padding.left - padding.right, self.height - padding.top - padding.bottom);
+	return container;
 }
 
 @end

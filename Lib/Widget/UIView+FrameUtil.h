@@ -15,5 +15,10 @@
 
 - (void)addSubviewsFromStartV:(CGFloat)pad views:(NSArray*)views;
 - (void)addSubviewsFromEndV:(CGFloat)pad views:(NSArray*)views;
+- (void)addSubviewsFromStartH:(CGFloat)pad views:(NSArray*)views;
+
+
+- (UIView*)wrapWithPadding:(UIEdgeInsets)padding;
+
 
 @end
