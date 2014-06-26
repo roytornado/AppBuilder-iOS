@@ -1,6 +1,7 @@
 #import "SuperUIButton.h"
 #import "UIImage+HaxegonMasking.h"
 #import "UIView+FrameUtil.h"
+#import "UIImage-Extensions.h"
 #import "CalUtil.h"
 #import "ImgUtil.h"
 
@@ -33,6 +34,10 @@
 		self.borderColor = [UIColor clearColor];
 		self.imgPad = 4;
 		self.opaque = NO;
+		self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+		self.indicator.frame = CGRectMake(0, 0, 20, 20);
+		[self addSubview:self.indicator];
+		[self hideLoading];
 	}
 	return self;
 }
@@ -101,12 +106,26 @@
 	if(self.img){
 		if(self.imgPos == SuperUIButtonImgPosCenter){
 			CGSize imageSize = self.img.size;
+			NSLog( @"imageSize: %@",NSStringFromCGSize(imageSize) );
 			[self.img drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
 		}
 		if(self.imgPos == SuperUIButtonImgPosCenterFill){
 			CGSize imageSize = self.img.size;
 			UIImage* fitImage = [ImgUtil reize:self.img scaledTosize:self.bounds.size];
 			imageSize = fitImage.size;
+			[fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
+		}
+		if(self.imgPos == SuperUIButtonImgPosCenterFit){
+			CGSize imageSize = self.img.size;
+			UIImage* fitImage = [self.img imageByScalingProportionallyToSize:self.bounds.size];
+			imageSize = fitImage.size;
+			[fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
+		}
+		if(self.imgPos == SuperUIButtonImgPosCenterCrop){
+			CGSize imageSize = self.img.size;
+			UIImage* fitImage = [self.img imageByScalingAndCroppingForSize:self.bounds.size];
+			imageSize = fitImage.size;
+			NSLog( @"imageSize: %@ to %@",NSStringFromCGSize(self.img.size),NSStringFromCGSize(imageSize) );
 			[fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
 		}
 		if(self.imgPos == SuperUIButtonImgPosUp){
@@ -151,6 +170,18 @@
 		width += self.img.size.width + 4;
 	}
 	return CGSizeMake(width, self.frame.size.height);
+}
+
+- (void)showLoading {
+	[self.indicator centerX:self];
+	[self.indicator centerY:self];
+	self.indicator.hidden = NO;
+	[self.indicator startAnimating];
+}
+
+- (void)hideLoading {
+	self.indicator.hidden = YES;
+	[self.indicator stopAnimating];
 }
 
 @end

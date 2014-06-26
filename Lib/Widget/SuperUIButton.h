@@ -12,6 +12,8 @@ typedef NS_ENUM (NSInteger, SuperUIButtonImgPos){
 	SuperUIButtonImgPosLeft,
 	SuperUIButtonImgPosCenter,
 	SuperUIButtonImgPosCenterFill,
+	SuperUIButtonImgPosCenterFit,
+	SuperUIButtonImgPosCenterCrop,
 	SuperUIButtonImgPosLeftOfText,
 };
 
@@ -34,10 +36,12 @@ typedef NS_ENUM (NSInteger, SuperUIButtonImgPos){
 @property NSString* label;
 @property BOOL bedge;
 @property UIColor* bedgeColor;
+@property UIActivityIndicatorView* indicator;
 
 @property NSMutableDictionary* extra;
 
 - (CGSize)calSize;
-
+- (void)showLoading;
+- (void)hideLoading;
 
 @end
