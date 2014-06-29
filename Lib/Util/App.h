@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "NSData+Base64.h"
 
 @interface App : NSObject
 + (id)me;
@@ -16,4 +17,7 @@
 - (NSString*)getDeviceId;
 - (NSString*)getVersionCode;
 - (NSString*)getVersionName;
+- (NSString*)archiveObject:(NSCoder*)object;
+- (id)unarchiveObject:(NSString*)src;
+
 @end

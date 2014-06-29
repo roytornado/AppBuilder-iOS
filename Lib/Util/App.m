@@ -175,5 +175,20 @@ static NSMutableArray* langPathList = nil;
 	return [UIColor colorWithRed:( (rgbValue & 0xFF0000) >> 16 ) / 255.0 green:( (rgbValue & 0xFF00) >> 8 ) / 255.0 blue:(rgbValue & 0xFF) / 255.0 alpha:1.0];
 }
 
+- (NSString*)archiveObject:(NSObject*)object
+{
+	NSData* data = [NSKeyedArchiver archivedDataWithRootObject:object];
+	NSString* result = [data base64Encoding];
+	NSLog(@"convertObjectToJson: %@", result);
+	return result;
+}
+
+- (id)unarchiveObject:(NSString*)src
+{
+	NSData* data = [NSData base64DataFromString:src];
+	id obj = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	return obj;
+}
+
 
 @end
