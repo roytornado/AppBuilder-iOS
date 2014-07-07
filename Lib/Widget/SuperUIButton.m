@@ -106,26 +106,28 @@
 	if(self.img){
 		if(self.imgPos == SuperUIButtonImgPosCenter){
 			CGSize imageSize = self.img.size;
-			NSLog( @"imageSize: %@",NSStringFromCGSize(imageSize) );
 			[self.img drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
 		}
 		if(self.imgPos == SuperUIButtonImgPosCenterFill){
 			CGSize imageSize = self.img.size;
 			UIImage* fitImage = [ImgUtil reize:self.img scaledTosize:self.bounds.size];
 			imageSize = fitImage.size;
+			imageSize = CGSizeMake(fitImage.size.width - self.insetSize * 2, fitImage.size.height - self.insetSize * 2);
 			[fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
 		}
 		if(self.imgPos == SuperUIButtonImgPosCenterFit){
 			CGSize imageSize = self.img.size;
 			UIImage* fitImage = [self.img imageByScalingProportionallyToSize:self.bounds.size];
 			imageSize = fitImage.size;
+			imageSize = CGSizeMake(fitImage.size.width - self.insetSize * 2, fitImage.size.height - self.insetSize * 2);
 			[fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
 		}
 		if(self.imgPos == SuperUIButtonImgPosCenterCrop){
 			CGSize imageSize = self.img.size;
 			UIImage* fitImage = [self.img imageByScalingAndCroppingForSize:self.bounds.size];
 			imageSize = fitImage.size;
-			NSLog( @"imageSize: %@ to %@",NSStringFromCGSize(self.img.size),NSStringFromCGSize(imageSize) );
+			imageSize = CGSizeMake(fitImage.size.width - self.insetSize * 2, fitImage.size.height - self.insetSize * 2);
+			NSLog( @"SuperUIButtonImgPosCenterCrop: %@ to %@",NSStringFromCGSize(self.img.size),NSStringFromCGSize(imageSize) );
 			[fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
 		}
 		if(self.imgPos == SuperUIButtonImgPosUp){
