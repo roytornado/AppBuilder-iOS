@@ -34,6 +34,10 @@
 	[self setOrigin:CGPointMake(self.frame.origin.x, parent.height / 2 - self.height / 2)];
 }
 
+- (void)alignY:(UIView*)other {
+	[self setOrigin:CGPointMake(self.frame.origin.x, other.frame.origin.y + other.height / 2 - self.height / 2)];
+}
+
 - (void)addSubviewsFromStartV:(CGFloat)pad views:(NSArray*)views {
 	CGFloat curY = 0;
 	for(UIView* view in views){
