@@ -2,6 +2,6 @@
 
 @interface SuperUITextField : UITextField
 
-@property CGFloat padding;
+@property UIEdgeInsets inset;
 
 @end
