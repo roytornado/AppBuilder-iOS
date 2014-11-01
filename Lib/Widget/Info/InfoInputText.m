@@ -1,173 +1,81 @@
 #import "InfoInputText.h"
-#import "Formatter.h"
 
-@implementation InfoInputText {
-    UITableViewCell *my_cell;
-    UITextField     *input;
-    NSMutableString *valTemp;
-}
-@synthesize value;
-@synthesize key, hint, type;
+@implementation InfoInputText
 
-+ (InfoInputText *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value WithType:(InfoInputTextType)_type
+- (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value
 {
-    InfoInputText *obj = [[InfoInputText alloc] init];
-
-    obj.key = _key;
-    obj.value = _value;
-    obj.type = _type;
-    [parent.cells addObject:obj];
-    return obj;
+    self = [self init];
+    self.key = key;
+    self.value = value;
+    [container addSubview:self];
+    return self;
 }
 
 - (id)init
 {
     self = [super init];
-    
-    if (self) {
-        valTemp = [[NSMutableString alloc] init];
+
+    if (self)
+    {
+        self.keyView = [[UILabel alloc] init];
+        [self addSubview:self.keyView];
+
+        self.valueView = [[UITextField alloc] init];
+        self.valueView.delegate = self;
+        [self addSubview:self.valueView];
+
+        [self config];
     }
-    
+
     return self;
 }
 
-- (NSString *)getCellId
+- (void)config
 {
-    return @"InfoInputText";
+    self.backgroundColor = [UIColor whiteColor];
+    self.keyView.textColor = [UIColor darkGrayColor];
+    self.valueView.textColor = [UIColor darkGrayColor];
+    self.valueView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.valueView.autocorrectionType = UITextAutocorrectionTypeNo;
+
+    self.inputLimit = 10000;
+
+    self.widthKey = 80;
+    self.padOutter = 10;
+    self.padInner = 10;
 }
 
-- (UITableViewCell *)create
+- (CGFloat)layout:(CGFloat)contentWidth
 {
-    my_cell = [[InputTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[self getCellId]];
-    input = [[UITextField alloc] initWithFrame:CGRectMake(120, 15, 170, 35)];
-    input.delegate = self;
-    input.autocorrectionType = UITextAutocorrectionTypeNo;
-    input.placeholder = @"Input here";
-    [my_cell.contentView addSubview:input];
-    my_cell.detailTextLabel.frame = CGRectMake(my_cell.detailTextLabel.frame.origin.x
-        , my_cell.detailTextLabel.frame.origin.y + 10, my_cell.detailTextLabel.frame.size.width, my_cell.detailTextLabel.frame.size.height);
+    self.keyView.text = self.key;
+    self.valueView.text = self.value;
+    self.valueView.placeholder = self.hint;
 
-    my_cell.textLabel.numberOfLines = 0;
-    my_cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+    CGFloat wValue = contentWidth - self.widthKey - self.padOutter * 2 - self.padInner;
 
-
-    input.font = [UIFont boldSystemFontOfSize:16];
-
-    my_cell.detailTextLabel.numberOfLines = 0;
-    my_cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
-    my_cell.detailTextLabel.textColor = [UIColor lightGrayColor];
-    return my_cell;
-}
-
-- (void)fill
-{
-    if (type == InfoInputTextTypeDefault) {
-        input.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        input.autocorrectionType = UITextAutocorrectionTypeNo;
-        input.keyboardType = UIKeyboardTypeDefault;
-    }
-
-    if (type == InfoInputTextTypeUserId) {
-        input.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        input.autocorrectionType = UITextAutocorrectionTypeNo;
-        input.keyboardType = UIKeyboardTypeDefault;
-    }
-
-    if (type == InfoInputTextTypeName) {
-        input.autocapitalizationType = UITextAutocapitalizationTypeWords;
-        input.autocorrectionType = UITextAutocorrectionTypeNo;
-        input.keyboardType = UIKeyboardTypeDefault;
-    }
-
-    if (type == InfoInputTextTypeEmail) {
-        input.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        input.autocorrectionType = UITextAutocorrectionTypeNo;
-        input.keyboardType = UIKeyboardTypeEmailAddress;
-    }
-
-    if (type == InfoInputTextTypePhone) {
-        input.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        input.autocorrectionType = UITextAutocorrectionTypeNo;
-        input.keyboardType = UIKeyboardTypePhonePad;
-    }
-    //[input addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-
-    my_cell.textLabel.text = key;
-    input.text = self.value;
-    my_cell.detailTextLabel.text = hint;
-}
-
-- (CGFloat)getHeight
-{
-    CGFloat CELL_CONTENT_MARGIN = 5;
-    CGFloat FONT_SIZE = 16;
-    CGFloat CELL_CONTENT_WIDTH = 200;
-
-    NSString    *text = self.value;
-    CGSize      constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    CGSize      size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGFloat     height = MAX(size.height, 44.0f);
-
-    if (hint) {
-        CGSize  constraint = CGSizeMake(300, 20000.0f);
-        CGSize  size = [hint sizeWithFont:[UIFont systemFontOfSize:10] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-        height += size.height;
-    }
-
-    return height + (CELL_CONTENT_MARGIN * 2);
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    self.value = input.text;
-}
-
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    self.value = input.text;
-}
-
-- (NSString *)getValue
-{
-    return value;
+    self.keyView.frame = CGRectMake(self.padOutter, 0, self.widthKey, 44);
+    self.valueView.frame = CGRectMake(self.keyView.frameEndPoint.x + self.padInner, 0, wValue, 44);
+    return 44;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (type == InfoInputTextTypeUserId) {
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-
-        if (newLength > 30) {
-            return NO;
-        }
-
-        NSCharacterSet  *validCharSet = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ."] invertedSet];
-        NSString        *filtered = [[string componentsSeparatedByCharactersInSet:validCharSet] componentsJoinedByString:@""];
-        return [string isEqualToString:filtered];
-    }
-
-    if (type == InfoInputTextTypePhone) {
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-
-        if (newLength > 8) {
-            return NO;
-        }
-
-        NSCharacterSet  *validCharSet = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-        NSString        *filtered = [[string componentsSeparatedByCharactersInSet:validCharSet] componentsJoinedByString:@""];
-        return [string isEqualToString:filtered];
-    }
-    
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    if (self.charSet)
+    {
+        if (newLength > self.inputLimit)
+        {
+            return NO;
+        }
 
-    if (newLength > 255) {
+        NSCharacterSet *validCharSet = [[NSCharacterSet characterSetWithCharactersInString:self.charSet] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:validCharSet] componentsJoinedByString:@""];
+        return [string isEqualToString:filtered];
+    }
+    if (newLength > self.inputLimit)
+    {
         return NO;
     }
-
     return YES;
 }
 
@@ -179,7 +87,7 @@
 
 - (void)focus
 {
-    [input becomeFirstResponder];
+    [self.valueView becomeFirstResponder];
 }
 
 @end

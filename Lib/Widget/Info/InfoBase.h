@@ -1,13 +1,7 @@
 #import <Foundation/Foundation.h>
 
-@protocol InfoBase <NSObject>
+@protocol InfoBase
 
-- (NSString *)getCellId;
-- (UITableViewCell *)create;
-- (void)fill;
-- (CGFloat)getHeight;
-
-@optional
-- (NSString *)getTag;
+- (CGFloat)layout:(CGFloat)contentWidth;
 
 @end

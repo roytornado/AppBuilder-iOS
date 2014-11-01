@@ -10,31 +10,31 @@
 	<string>AppBuilder</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CA6AF862-0B3A-40A9-B67C-58F24FAAE506</key>
+		<key>F58F149168F574A35C68BBC7389DDBE06DC33319</key>
 		<string>https://github.com/roytornado/AppBuilder-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AppBuilder.xcodeproj/project.xcworkspace</string>
+	<string>AppBuilder.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CA6AF862-0B3A-40A9-B67C-58F24FAAE506</key>
+		<key>F58F149168F574A35C68BBC7389DDBE06DC33319</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/roytornado/AppBuilder-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CA6AF862-0B3A-40A9-B67C-58F24FAAE506</string>
+	<string>F58F149168F574A35C68BBC7389DDBE06DC33319</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CA6AF862-0B3A-40A9-B67C-58F24FAAE506</string>
+			<string>F58F149168F574A35C68BBC7389DDBE06DC33319</string>
 			<key>IDESourceControlWCCName</key>
-			<string>AppBuilder-ios</string>
+			<string>AppBuilder-iOS</string>
 		</dict>
 	</array>
 </dict>

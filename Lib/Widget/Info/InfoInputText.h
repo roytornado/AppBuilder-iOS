@@ -1,25 +1,27 @@
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import "InfoBase.h"
-#import "InfoSection.h"
-#import "InputTextCell.h"
+#import "AppBuilder.h"
 
-typedef enum {
-    InfoInputTextTypeDefault,
-    InfoInputTextTypeUserId,
-    InfoInputTextTypeName,
-    InfoInputTextTypeEmail,
-    InfoInputTextTypePhone,
-} InfoInputTextType;
+#define kInfoInputTextCharSetUsername @"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ."
+#define kInfoInputTextCharSetNumber @"1234567890"
+#define kInfoInputTextCharSetAmount @"1234567890."
 
-@interface InfoInputText : NSObject <InfoBase, UITextFieldDelegate>
+@interface InfoInputText : UIView <InfoBase, UITextFieldDelegate>
 
-@property NSString          *key;
-@property (nonatomic,getter= getValue) NSString          *value;
-@property NSString          *hint;
-@property InfoInputTextType type;
+@property NSString *key;
+@property NSString *value;
+@property NSString *hint;
+@property NSString *charSet;
+@property int inputLimit;
 
-+ (InfoInputText *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value WithType: (InfoInputTextType) _type;
+@property UILabel *keyView;
+@property UITextField *valueView;
+
+@property CGFloat widthKey;
+@property CGFloat padOutter;
+@property CGFloat padInner;
+
+
+- (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value;
 - (void)focus;
 
 @end

@@ -1,15 +1,18 @@
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import "InfoBase.h"
-#import "InfoSection.h"
+#import "AppBuilder.h"
 
-@interface InfoTextH : NSObject <InfoBase>
+@interface InfoTextH : UIView <InfoBase>
 
-@property NSString              *key;
-@property NSString              *value;
-@property UITableViewCellStyle  style;
+@property NSString *key;
+@property NSString *value;
 
-+ (InfoTextH *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value WithStyle:(UITableViewCellStyle)_style;
-+ (InfoTextH *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value;
+@property UILabel *keyView;
+@property UILabel *valueView;
+
+@property CGFloat widthKey;
+@property CGFloat padOutter;
+@property CGFloat padInner;
+
+- (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value;
 
 @end

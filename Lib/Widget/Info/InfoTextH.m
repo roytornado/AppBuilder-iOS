@@ -1,64 +1,59 @@
 #import "InfoTextH.h"
 
-@implementation InfoTextH {
-    UITableViewCell *my_cell;
-}
-@synthesize key, value, style;
+@implementation InfoTextH
 
-+ (InfoTextH *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value WithStyle:(UITableViewCellStyle)_style
+- (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value
 {
-    InfoTextH *obj = [[InfoTextH alloc] init];
-
-    obj.key = _key;
-    obj.value = _value;
-    obj.style = _style;
-
-    [parent.cells addObject:obj];
-    return obj;
+    self = [self init];
+    self.key = key;
+    self.value = value;
+    [container addSubview:self];
+    return self;
 }
 
-+ (InfoTextH *)createToSection:(InfoSection *)parent WithKey:(NSString *)_key WithValue:(NSString *)_value
+- (id)init
 {
-    InfoTextH *obj = [[InfoTextH alloc] init];
+    self = [super init];
 
-    obj.key = _key;
-    obj.value = _value;
-    obj.style = UITableViewCellStyleValue2;
+    if (self)
+    {
+        self.keyView = [[UILabel alloc] init];
+        [self addSubview:self.keyView];
+        self.valueView = [[UILabel alloc] init];
+        [self addSubview:self.valueView];
+        [self config];
+    }
 
-    [parent.cells addObject:obj];
-    return obj;
+    return self;
 }
 
-- (NSString *)getCellId
+- (void)config
 {
-    return @"InfoTextHCell";
+    self.backgroundColor = [UIColor whiteColor];
+    self.keyView.textColor = [UIColor darkGrayColor];
+    self.valueView.textColor = [UIColor darkGrayColor];
+    self.keyView.numberOfLines = 0;
+    self.valueView.numberOfLines = 0;
+
+    self.widthKey = 80;
+    self.padOutter = 10;
+    self.padInner = 10;
 }
 
-- (UITableViewCell *)create
+- (CGFloat)layout:(CGFloat)contentWidth
 {
-    my_cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:[self getCellId]];
+    self.keyView.text = self.key;
+    self.valueView.text = self.value;
 
-    return my_cell;
-}
 
-- (void)fill
-{
-    my_cell.textLabel.text = key;
-    my_cell.detailTextLabel.text = value;
-}
+    CGFloat wValue = contentWidth - self.widthKey - self.padOutter * 2 - self.padInner;
 
-- (CGFloat)getHeight
-{
-    CGFloat CELL_CONTENT_MARGIN = 5;
-    CGFloat FONT_SIZE = 16;
-    CGFloat CELL_CONTENT_WIDTH = 200;
+    CGSize sizeKey = [self.keyView sizeThatFits:CGSizeMake(self.widthKey, HUGE_VALF)];
+    CGSize sizeValue = [self.valueView sizeThatFits:CGSizeMake(wValue, HUGE_VALF)];
 
-    NSString    *text = value;
-    CGSize      constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    CGSize      size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGFloat     height = MAX(size.height, 44.0f);
-
-    return height + (CELL_CONTENT_MARGIN * 2);
+    self.keyView.frame = CGRectMake(self.padOutter, self.padOutter, self.widthKey, sizeKey.height);
+    self.valueView.frame = CGRectMake(self.keyView.frameEndPoint.x + self.padInner, self.padOutter, sizeValue.width, sizeValue.height);
+    return MAX(self.keyView.height, self.valueView.height) + self.padOutter * 2;
 }
 
 @end

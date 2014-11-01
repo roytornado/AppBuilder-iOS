@@ -1,66 +1,38 @@
-//
-//  InfoDemoViewController.m
-//  AppBuilder
-//
-//  Created by Roy Ng on 17/10/13.
-//  Copyright (c) 2013 RoynalNext. All rights reserved.
-//
-
 #import "InfoDemoViewController.h"
-#import "InfoGroup.h"
+#import "AppBuilder.h"
+
+@interface InfoDemoViewController ()
+
+@property (weak, nonatomic) IBOutlet InfoVerticalScrollView *infoVerticalScrollView;
+
+@end
 
 @implementation InfoDemoViewController {
-    InfoGroup *infoGroup;
-    InfoSection *infoSection1;
-    InfoSection *infoSection2;
-
     InfoInputText *infoInput1;
-    InfoTextH *infoText1;
-    InfoTextV *infoText2;
-    InfoInputNext *infoNext1;
+    InfoInputText *infoInput2;
+    InfoInputText *infoInput3;
 }
-
-@synthesize table;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    infoGroup = [InfoGroup createWithTable:table];
-    infoGroup.delegate = self;
-    infoSection1 = [InfoSection createToGroup:infoGroup header:@"Info Header 1" footer:@"Info Footer 1"];
-    infoSection2 = [InfoSection createToGroup:infoGroup header:@"Info Header 2" footer:@"Info Footer 2"];
+    self.infoVerticalScrollView.paddingTop = 0;
 
+    infoInput1 = [[InfoInputText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Message" value:@""];
+    infoInput1.hint = @"InfoInputTextTypeDefault";
+    infoInput2 = [[InfoInputText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Phone Number" value:@""];
+    infoInput2.hint = @"InfoInputTextTypeEmail";
+    infoInput2.charSet = kInfoInputTextCharSetNumber;
+    infoInput2.inputLimit = 8;
+    infoInput3 = [[InfoInputText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Amount" value:@""];
+    infoInput3.hint = @"InfoInputTextTypePhone";
+    infoInput3.charSet = kInfoInputTextCharSetAmount;
+    infoInput3.inputLimit = 12;
 
-    infoInput1 = [InfoInputText createToSection:infoSection1 WithKey:@"Input 1" WithValue:@"" WithType:InfoInputTextTypeName];
-    infoText1 = [InfoTextH createToSection:infoSection1 WithKey:@"Text 1" WithValue:@"Value 1"];
-    infoText2 = [InfoTextV createToSection:infoSection1 WithKey:@"Text 2" WithValue:@"Value 2"];
-    infoNext1 = [InfoInputNext createToSection:infoSection1 WithKey:@"Next 1" WithValue:@"Value" WithTag:@""];
-    [InfoTextH createToSection:infoSection1 WithKey:@"Static Text" WithValue:@"Static Value"];
-    [InfoTextH createToSection:infoSection1 WithKey:@"Static Text" WithValue:@"Static Value"];
-
-    [InfoTextH createToSection:infoSection2 WithKey:@"Static Text" WithValue:@"Static Value"];
-    [InfoTextV createToSection:infoSection2 WithKey:@"Static Text" WithValue:@"Static Value"];
-    [InfoTextH createToSection:infoSection2 WithKey:@"Static Text" WithValue:@"Static Value"];
-
-    [table reloadData];
-
-    UITextView *popView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 180, 80)];
-    popView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    popView.textAlignment = NSTextAlignmentCenter;
-    popView.textColor = [UIColor whiteColor];
-    popView.text = @"Hello";
-}
-
-- (UIView *)sectionHeaderView:(InfoSection *)section
-{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, table.bounds.size.width, 20)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, headerView.frame.size.width - 16, 20)];
-    label.text = section.header;
-    label.font = [UIFont boldSystemFontOfSize:14];
-    label.textColor = [UIColor blueColor];
-    label.backgroundColor = [UIColor clearColor];
-    [headerView addSubview:label];
-    return headerView;
+    [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Username" value:@"Roy Ng"];
+    [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Email" value:@"roytornado@gmail.com"];
+    [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Desc" value:@"[InfoTextH] This iOS lib is aimed to help user to build iOS apps quickly."];
+    [[InfoTextV alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Desc" value:@"[InfoTextV] This iOS lib is aimed to help user to build iOS apps quickly."];
 }
 
 @end
