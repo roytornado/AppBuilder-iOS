@@ -41,6 +41,7 @@
 		56A317FD1803DC6B00E45773 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A317FC1803DC6B00E45773 /* ViewController.m */; };
 		56A317FF1803DC6C00E45773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A317FE1803DC6C00E45773 /* Images.xcassets */; };
 		56C45D551A03DC70007E5E98 /* InfoVerticalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C45D541A03DC70007E5E98 /* InfoVerticalScrollView.m */; };
+		56C45D591A04926F007E5E98 /* InfoInputLongText.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C45D581A04926F007E5E98 /* InfoInputLongText.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,8 @@
 		56C45D531A03DC70007E5E98 /* InfoVerticalScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoVerticalScrollView.h; sourceTree = "<group>"; };
 		56C45D541A03DC70007E5E98 /* InfoVerticalScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoVerticalScrollView.m; sourceTree = "<group>"; };
 		56C45D561A03DE71007E5E98 /* AppBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppBuilder.h; sourceTree = "<group>"; };
+		56C45D571A04926F007E5E98 /* InfoInputLongText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoInputLongText.h; sourceTree = "<group>"; };
+		56C45D581A04926F007E5E98 /* InfoInputLongText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoInputLongText.m; sourceTree = "<group>"; };
 		E0D554C57BB24A2C91472B69 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -219,6 +222,8 @@
 				568ADE2F19594F2600BD6BA1 /* InfoTextV.m */,
 				56C45D531A03DC70007E5E98 /* InfoVerticalScrollView.h */,
 				56C45D541A03DC70007E5E98 /* InfoVerticalScrollView.m */,
+				56C45D571A04926F007E5E98 /* InfoInputLongText.h */,
+				56C45D581A04926F007E5E98 /* InfoInputLongText.m */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				56A317F41803DC6B00E45773 /* AppDelegate.m in Sources */,
 				568ADE7219594F2700BD6BA1 /* NSData+NSData_Conversion.m in Sources */,
 				5626CC3A180FDDC9009049E1 /* InfoDemoViewController.m in Sources */,
+				56C45D591A04926F007E5E98 /* InfoInputLongText.m in Sources */,
 				568ADE8719594F2700BD6BA1 /* SuperUIButton.m in Sources */,
 				568ADE7E19594F2700BD6BA1 /* InfoInputText.m in Sources */,
 				568ADE8D19594F2700BD6BA1 /* BaseXMLHandler.m in Sources */,

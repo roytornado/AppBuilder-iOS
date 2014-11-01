@@ -11,6 +11,7 @@
     InfoInputText *infoInput1;
     InfoInputText *infoInput2;
     InfoInputText *infoInput3;
+    InfoInputLongText *infoInput4;
 }
 
 - (void)viewDidLoad
@@ -28,6 +29,8 @@
     infoInput3.hint = @"InfoInputTextTypePhone";
     infoInput3.charSet = kInfoInputTextCharSetAmount;
     infoInput3.inputLimit = 12;
+    infoInput4 = [[InfoInputLongText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Long Text" value:@"Long long long long long text"];
+    infoInput4.hint = @"InfoInputTextTypeDefault";
 
     [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Username" value:@"Roy Ng"];
     [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Email" value:@"roytornado@gmail.com"];

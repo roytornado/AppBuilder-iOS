@@ -4,6 +4,7 @@
 #import "InfoBase.h"
 #import "InfoVerticalScrollView.h"
 #import "InfoInputText.h"
+#import "InfoInputLongText.h"
 #import "InfoTextH.h"
 #import "InfoTextV.h"
 
