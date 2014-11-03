@@ -2,6 +2,18 @@
 
 @implementation InfoInputText
 
++ (void)initialize
+{
+    [InfoInputText appearance].backgroundColor = [UIColor whiteColor];
+    [InfoInputText appearance].widthKey = 80;
+    [InfoInputText appearance].padOutter = 10;
+    [InfoInputText appearance].padInner = 10;
+    [InfoInputText appearance].keyColor = [UIColor darkGrayColor];
+    [InfoInputText appearance].keyFont = [UIFont systemFontOfSize:14];
+    [InfoInputText appearance].valueColor = [UIColor darkGrayColor];
+    [InfoInputText appearance].valueFont = [UIFont systemFontOfSize:14];
+}
+
 - (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value
 {
     self = [self init];
@@ -32,21 +44,18 @@
 
 - (void)config
 {
-    self.backgroundColor = [UIColor whiteColor];
-    self.keyView.textColor = [UIColor darkGrayColor];
-    self.valueView.textColor = [UIColor darkGrayColor];
     self.valueView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.valueView.autocorrectionType = UITextAutocorrectionTypeNo;
-
     self.inputLimit = 10000;
-
-    self.widthKey = 80;
-    self.padOutter = 10;
-    self.padInner = 10;
 }
 
 - (CGFloat)layout:(CGFloat)contentWidth
 {
+    self.keyView.textColor = self.keyColor;
+    self.keyView.font = self.keyFont;
+    self.valueView.textColor = self.valueColor;
+    self.valueView.font = self.valueFont;
+
     self.keyView.text = self.key;
     self.valueView.text = self.value;
     self.valueView.placeholder = self.hint;
@@ -60,23 +69,29 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    BOOL flag = YES;
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     if (self.charSet)
     {
         if (newLength > self.inputLimit)
         {
-            return NO;
+            flag =  NO;
         }
 
         NSCharacterSet *validCharSet = [[NSCharacterSet characterSetWithCharactersInString:self.charSet] invertedSet];
         NSString *filtered = [[string componentsSeparatedByCharactersInSet:validCharSet] componentsJoinedByString:@""];
-        return [string isEqualToString:filtered];
+        flag =  [string isEqualToString:filtered];
     }
     if (newLength > self.inputLimit)
     {
-        return NO;
+        flag =  NO;
     }
-    return YES;
+
+    if (flag)
+    {
+        self.value = string;
+    }
+    return flag;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

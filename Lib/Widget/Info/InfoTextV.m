@@ -2,6 +2,18 @@
 
 @implementation InfoTextV
 
++ (void)initialize
+{
+    [InfoTextV appearance].backgroundColor = [UIColor whiteColor];
+    [InfoTextV appearance].widthKey = 80;
+    [InfoTextV appearance].padOutter = 10;
+    [InfoTextV appearance].padInner = 10;
+    [InfoTextV appearance].keyColor = [UIColor darkGrayColor];
+    [InfoTextV appearance].keyFont = [UIFont systemFontOfSize:14];
+    [InfoTextV appearance].valueColor = [UIColor darkGrayColor];
+    [InfoTextV appearance].valueFont = [UIFont systemFontOfSize:14];
+}
+
 - (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value
 {
     self = [self init];
@@ -29,19 +41,17 @@
 
 - (void)config
 {
-    self.backgroundColor = [UIColor whiteColor];
-    self.keyView.textColor = [UIColor darkGrayColor];
-    self.valueView.textColor = [UIColor darkGrayColor];
     self.keyView.numberOfLines = 0;
     self.valueView.numberOfLines = 0;
-
-    self.widthKey = 80;
-    self.padOutter = 10;
-    self.padInner = 10;
 }
 
 - (CGFloat)layout:(CGFloat)contentWidth
 {
+    self.keyView.textColor = self.keyColor;
+    self.keyView.font = self.keyFont;
+    self.valueView.textColor = self.valueColor;
+    self.valueView.font = self.valueFont;
+
     self.keyView.text = self.key;
     self.valueView.text = self.value;
 

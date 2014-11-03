@@ -3,6 +3,13 @@
 
 @implementation InfoVerticalScrollView
 
++ (void)initialize
+{
+    [InfoVerticalScrollView appearance].paddingBetweenViews = 1;
+    [InfoVerticalScrollView appearance].paddingTop = 10;
+    [InfoVerticalScrollView appearance].paddingBottom = 100;
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -20,9 +27,6 @@
 - (void)baseClassInit
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sizeDidChanged) name:@"InfoSizeDidChanged" object:nil];
-    self.paddingBetweenViews = 1;
-    self.paddingTop = 10;
-    self.paddingBottom = 10;
 }
 
 - (void)sizeDidChanged

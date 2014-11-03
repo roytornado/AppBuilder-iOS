@@ -7,6 +7,8 @@
 #import "InfoInputLongText.h"
 #import "InfoTextH.h"
 #import "InfoTextV.h"
+#import "InfoTextS.h"
+
 
 #import "UIView+FrameUtil.h"
 #import "Crypto.h"

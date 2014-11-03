@@ -42,6 +42,7 @@
 		56A317FF1803DC6C00E45773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A317FE1803DC6C00E45773 /* Images.xcassets */; };
 		56C45D551A03DC70007E5E98 /* InfoVerticalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C45D541A03DC70007E5E98 /* InfoVerticalScrollView.m */; };
 		56C45D591A04926F007E5E98 /* InfoInputLongText.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C45D581A04926F007E5E98 /* InfoInputLongText.m */; };
+		56C45D5C1A071D65007E5E98 /* InfoTextS.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C45D5B1A071D65007E5E98 /* InfoTextS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,8 @@
 		56C45D561A03DE71007E5E98 /* AppBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppBuilder.h; sourceTree = "<group>"; };
 		56C45D571A04926F007E5E98 /* InfoInputLongText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoInputLongText.h; sourceTree = "<group>"; };
 		56C45D581A04926F007E5E98 /* InfoInputLongText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoInputLongText.m; sourceTree = "<group>"; };
+		56C45D5A1A071D65007E5E98 /* InfoTextS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTextS.h; sourceTree = "<group>"; };
+		56C45D5B1A071D65007E5E98 /* InfoTextS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTextS.m; sourceTree = "<group>"; };
 		E0D554C57BB24A2C91472B69 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -214,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				568ADE1F19594F2600BD6BA1 /* InfoBase.h */,
+				56C45D571A04926F007E5E98 /* InfoInputLongText.h */,
+				56C45D581A04926F007E5E98 /* InfoInputLongText.m */,
 				568ADE2819594F2600BD6BA1 /* InfoInputText.h */,
 				568ADE2919594F2600BD6BA1 /* InfoInputText.m */,
 				568ADE2C19594F2600BD6BA1 /* InfoTextH.h */,
@@ -222,8 +227,8 @@
 				568ADE2F19594F2600BD6BA1 /* InfoTextV.m */,
 				56C45D531A03DC70007E5E98 /* InfoVerticalScrollView.h */,
 				56C45D541A03DC70007E5E98 /* InfoVerticalScrollView.m */,
-				56C45D571A04926F007E5E98 /* InfoInputLongText.h */,
-				56C45D581A04926F007E5E98 /* InfoInputLongText.m */,
+				56C45D5A1A071D65007E5E98 /* InfoTextS.h */,
+				56C45D5B1A071D65007E5E98 /* InfoTextS.m */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				568ADE7319594F2700BD6BA1 /* NSString+Base64.m in Sources */,
 				568ADE8019594F2700BD6BA1 /* InfoTextH.m in Sources */,
 				568ADE8C19594F2700BD6BA1 /* UIView+FrameUtil.m in Sources */,
+				56C45D5C1A071D65007E5E98 /* InfoTextS.m in Sources */,
 				568ADE6C19594F2700BD6BA1 /* DateTimeUtil.m in Sources */,
 				568ADE8B19594F2700BD6BA1 /* UIImage+HaxegonMasking.m in Sources */,
 				568ADE7619594F2700BD6BA1 /* UIImage-Extensions.m in Sources */,

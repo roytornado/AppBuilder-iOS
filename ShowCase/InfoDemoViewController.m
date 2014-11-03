@@ -17,8 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.infoVerticalScrollView.paddingTop = 0;
-
     infoInput1 = [[InfoInputText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Message" value:@""];
     infoInput1.hint = @"InfoInputTextTypeDefault";
     infoInput2 = [[InfoInputText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Phone Number" value:@""];
@@ -32,6 +30,7 @@
     infoInput4 = [[InfoInputLongText alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Long Text" value:@"Long long long long long text"];
     infoInput4.hint = @"InfoInputTextTypeDefault";
 
+    [[InfoTextS alloc] initWithInfoVertical:self.infoVerticalScrollView key:@"Header"];
     [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Username" value:@"Roy Ng"];
     [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Email" value:@"roytornado@gmail.com"];
     [[InfoTextH alloc]initWithInfoVertical:self.infoVerticalScrollView key:@"Desc" value:@"[InfoTextH] This iOS lib is aimed to help user to build iOS apps quickly."];

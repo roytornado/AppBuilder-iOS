@@ -2,8 +2,8 @@
 
 @interface InfoVerticalScrollView : UIScrollView
 
-@property CGFloat paddingBetweenViews;
-@property CGFloat paddingTop;
-@property CGFloat paddingBottom;
+@property CGFloat paddingBetweenViews UI_APPEARANCE_SELECTOR;
+@property CGFloat paddingTop UI_APPEARANCE_SELECTOR;
+@property CGFloat paddingBottom UI_APPEARANCE_SELECTOR;
 
 @end

@@ -2,6 +2,18 @@
 
 @implementation InfoInputLongText
 
++ (void)initialize
+{
+    [InfoInputLongText appearance].backgroundColor = [UIColor whiteColor];
+    [InfoInputLongText appearance].widthKey = 80;
+    [InfoInputLongText appearance].padOutter = 10;
+    [InfoInputLongText appearance].padInner = 10;
+    [InfoInputLongText appearance].keyColor = [UIColor darkGrayColor];
+    [InfoInputLongText appearance].keyFont = [UIFont systemFontOfSize:14];
+    [InfoInputLongText appearance].valueColor = [UIColor darkGrayColor];
+    [InfoInputLongText appearance].valueFont = [UIFont systemFontOfSize:14];
+}
+
 - (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value
 {
     self = [self init];
@@ -32,23 +44,18 @@
 
 - (void)config
 {
-    self.backgroundColor = [UIColor whiteColor];
-    self.keyView.textColor = [UIColor darkGrayColor];
-    self.valueView.textColor = [UIColor darkGrayColor];
     self.valueView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.valueView.autocorrectionType = UITextAutocorrectionTypeNo;
-
     self.inputLimit = 10000;
-
-    self.widthKey = 80;
-    self.padOutter = 10;
-    self.padInner = 10;
-
-    self.valueView.backgroundColor = [UIColor orangeColor];
 }
 
 - (CGFloat)layout:(CGFloat)contentWidth
 {
+    self.keyView.textColor = self.keyColor;
+    self.keyView.font = self.keyFont;
+    self.valueView.textColor = self.valueColor;
+    self.valueView.font = self.valueFont;
+
     self.keyView.text = self.key;
     self.valueView.text = self.value;
     //self.valueView.placeholder = self.hint;
@@ -87,7 +94,6 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     self.value = textView.text;
-    NSLog(@"textViewDidChange: %@", textView.text);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"InfoSizeDidChanged" object:nil];
 }
 
