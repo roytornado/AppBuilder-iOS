@@ -26,12 +26,24 @@
 
 - (void)baseClassInit
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sizeDidChanged) name:@"InfoSizeDidChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sizeDidChanged) name:kInfoNotificationSizeDidChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidFocus:) name:kInfoNotificationViewDidFocus object:nil];
 }
 
 - (void)sizeDidChanged
 {
     [self setNeedsLayout];
+}
+
+- (void)viewDidFocus:(NSNotification *)notification
+{
+    UIView *view = notification.object;
+    [self setContentOffset:CGPointMake(0, view.frame.origin.y - 100) animated:YES];
+}
+
+- (void)scrollToView:(UIView *)view
+{
+    [self setContentOffset:CGPointMake(0, view.frame.origin.y - 100) animated:YES];
 }
 
 - (void)layoutSubviews

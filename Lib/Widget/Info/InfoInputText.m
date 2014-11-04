@@ -94,17 +94,17 @@
     {
         flag =  NO;
     }
-
-    if (flag)
-    {
-        self.value = string;
-    }
     return flag;
 }
 
 - (void)textViewDidChange
 {
     self.value = self.valueView.text;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kInfoNotificationViewDidFocus object:self];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

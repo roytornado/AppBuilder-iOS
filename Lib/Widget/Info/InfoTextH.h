@@ -1,6 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "AppBuilder.h"
 
+#define kInfoNotificationSizeDidChanged @"kInfoNotificationSizeDidChanged"
+#define kInfoNotificationViewDidFocus @"kInfoNotificationViewDidFocus"
+
 @interface InfoTextH : UIView <InfoBase>
 
 @property NSString *key;
@@ -18,5 +21,7 @@
 @property CGFloat padInner UI_APPEARANCE_SELECTOR;
 
 - (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value;
+
+- (void)scrollToView:(UIView *)view;
 
 @end

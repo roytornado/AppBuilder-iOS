@@ -94,7 +94,7 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     self.value = textView.text;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"InfoSizeDidChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kInfoNotificationSizeDidChanged object:nil];
 }
 
 - (void)focus
