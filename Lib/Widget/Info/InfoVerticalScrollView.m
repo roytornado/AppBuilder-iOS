@@ -41,6 +41,12 @@
     [self setContentOffset:CGPointMake(0, view.frame.origin.y - 100) animated:YES];
 }
 
+- (void)scrollToBottom
+{
+    UIView *view = [self.subviews objectAtIndex:(self.subviews.count - 1)];
+    [self setContentOffset:CGPointMake(0, view.frame.origin.y - 100) animated:YES];
+}
+
 - (void)scrollToView:(UIView *)view
 {
     [self setContentOffset:CGPointMake(0, view.frame.origin.y - 100) animated:YES];

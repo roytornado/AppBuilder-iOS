@@ -22,6 +22,4 @@
 
 - (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value;
 
-- (void)scrollToView:(UIView *)view;
-
 @end

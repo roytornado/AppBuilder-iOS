@@ -6,4 +6,7 @@
 @property CGFloat paddingTop UI_APPEARANCE_SELECTOR;
 @property CGFloat paddingBottom UI_APPEARANCE_SELECTOR;
 
+- (void)scrollToBottom;
+- (void)scrollToView:(UIView *)view;
+
 @end

@@ -97,6 +97,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kInfoNotificationSizeDidChanged object:nil];
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kInfoNotificationViewDidFocus object:self];
+}
+
 - (void)focus
 {
     [self.valueView becomeFirstResponder];
