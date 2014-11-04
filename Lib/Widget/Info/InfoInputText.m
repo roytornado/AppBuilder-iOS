@@ -14,6 +14,11 @@
     [InfoInputText appearance].valueFont = [UIFont systemFontOfSize:14];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (instancetype)initWithInfoVertical:(InfoVerticalScrollView *)container key:(NSString *)key value:(NSString *)value
 {
     self = [self init];
@@ -35,6 +40,9 @@
         self.valueView = [[UITextField alloc] init];
         self.valueView.delegate = self;
         [self addSubview:self.valueView];
+
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange) name:UITextFieldTextDidChangeNotification object:nil];
 
         [self config];
     }
@@ -92,6 +100,11 @@
         self.value = string;
     }
     return flag;
+}
+
+- (void)textViewDidChange
+{
+    self.value = self.valueView.text;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
