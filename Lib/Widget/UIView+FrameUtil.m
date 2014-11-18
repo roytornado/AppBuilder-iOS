@@ -120,4 +120,20 @@
     return container;
 }
 
+- (void)removeAllSubviews
+{
+    for (UIView *subView in self.subviews)
+    {
+        [subView removeFromSuperview];
+    }
+}
+
+- (void)removeAllGestures
+{
+    for (UIGestureRecognizer *gr in self.gestureRecognizers)
+    {
+        [self removeGestureRecognizer:gr];
+    }
+}
+
 @end

@@ -10,17 +10,21 @@
 - (void)setOrigin:(CGPoint)point;
 - (void)setSize:(CGSize)size;
 
-- (void)centerX:(UIView*)parent;
-- (void)centerY:(UIView*)parent;
+- (void)centerX:(UIView *)parent;
+- (void)centerY:(UIView *)parent;
 
-- (void)alignY:(UIView*)other;
+- (void)alignY:(UIView *)other;
 
-- (void)addSubviewsFromStartV:(CGFloat)pad views:(NSArray*)views;
-- (void)addSubviewsFromEndV:(CGFloat)pad views:(NSArray*)views;
-- (void)addSubviewsFromStartH:(CGFloat)pad views:(NSArray*)views;
+- (void)addSubviewsFromStartV:(CGFloat)pad views:(NSArray *)views;
+- (void)addSubviewsFromEndV:(CGFloat)pad views:(NSArray *)views;
+- (void)addSubviewsFromStartH:(CGFloat)pad views:(NSArray *)views;
 
 
-- (UIView*)wrapWithPadding:(UIEdgeInsets)padding;
+- (UIView *)wrapWithPadding:(UIEdgeInsets)padding;
+
+
+- (void)removeAllSubviews;
+- (void)removeAllGestures;
 
 
 @end
