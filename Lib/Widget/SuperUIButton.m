@@ -22,27 +22,37 @@
     [self removeObserver:self forKeyPath:@"highlighted"];
 }
 
+- (void)awakeFromNib
+{
+    [self build];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame])
     {
-        extra = [NSMutableDictionary dictionary];
-        [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
-        self.style = SuperUIButtonStyleRect;
-        self.imgPos = SuperUIButtonImgPosLeft;
-        self.insetSize = 1;
-        self.backgroundColor = [UIColor clearColor];
-        self.cornerRadius = 0;
-        self.bgColor = [UIColor clearColor];
-        self.borderColor = [UIColor clearColor];
-        self.imgPad = 4;
-        self.opaque = NO;
-        self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        self.indicator.frame = CGRectMake(0, 0, 20, 20);
-        [self addSubview:self.indicator];
-        [self hideLoading];
+        [self build];
     }
     return self;
+}
+
+- (void)build
+{
+    extra = [NSMutableDictionary dictionary];
+    [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
+    self.style = SuperUIButtonStyleRect;
+    self.imgPos = SuperUIButtonImgPosLeft;
+    self.insetSize = 1;
+    self.backgroundColor = [UIColor clearColor];
+    self.cornerRadius = 0;
+    self.bgColor = [UIColor clearColor];
+    self.borderColor = [UIColor clearColor];
+    self.imgPad = 4;
+    self.opaque = NO;
+    self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.indicator.frame = CGRectMake(0, 0, 20, 20);
+    [self addSubview:self.indicator];
+    [self hideLoading];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
