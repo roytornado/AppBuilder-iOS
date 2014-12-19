@@ -38,6 +38,7 @@
 
 - (void)build
 {
+    self.backgroundColor = [UIColor clearColor];
     extra = [NSMutableDictionary dictionary];
     [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
     self.style = SuperUIButtonStyleRect;
@@ -69,6 +70,7 @@
 {
     _label = label;
     [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 
 - (UIImage *)img
@@ -83,7 +85,62 @@
     {
         _img = [ImgUtil reize:img scaledTosize:CGSizeMake(self.imgSize, self.imgSize)];
     }
+    self.imageView.image = _img;
     [self setNeedsDisplay];
+    [self setNeedsLayout];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.img)
+    {
+        self.imageView.image = self.img;
+        self.imageView.hidden = NO;
+        if (self.imgPos == SuperUIButtonImgPosCenter)
+        {
+            self.imageView.contentMode = UIViewContentModeCenter;
+            self.imageView.frame = CGRectInset(self.bounds, self.insetSize, self.insetSize);
+        }
+        if (self.imgPos == SuperUIButtonImgPosCenterFit)
+        {
+            self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            self.imageView.frame = CGRectInset(self.bounds, self.insetSize, self.insetSize);
+        }
+        if (self.imgPos == SuperUIButtonImgPosCenterFill)
+        {
+            self.imageView.contentMode = UIViewContentModeScaleToFill;
+            self.imageView.frame = CGRectInset(self.bounds, self.insetSize, self.insetSize);
+        }
+        if (self.imgPos == SuperUIButtonImgPosCenterCrop)
+        {
+            self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+            self.imageView.frame = CGRectInset(self.bounds, self.insetSize, self.insetSize);
+        }
+        if (self.imgPos == SuperUIButtonImgPosUp)
+        {
+            CGSize imageSize = self.img.size;
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, -imageSize.height, 0);
+            self.imageView.frame = CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height - self.imgPad, imageSize.width, imageSize.height);
+        }
+        if (self.imgPos == SuperUIButtonImgPosLeft)
+        {
+            CGSize imageSize = self.img.size;
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, imageSize.width, 0, 0);
+            self.imageView.frame = CGRectMake(self.imgPad, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height);
+        }
+        if (self.imgPos == SuperUIButtonImgPosLeftOfText)
+        {
+            CGSize imageSize = self.img.size;
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, imageSize.width + self.imgPad, 0, 0);
+            CGFloat totalWidth = self.titleLabel.width + imageSize.width + self.imgPad;
+            self.imageView.frame = CGRectMake(self.bounds.size.width / 2 - totalWidth / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height);
+        }
+    }
+    else
+    {
+        self.imageView.hidden = YES;
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -93,8 +150,8 @@
 
     [self setTitle:self.label forState:UIControlStateNormal];
     [self setTitleColor:textColor forState:UIControlStateNormal];
-    [self.titleLabel sizeToFit];
     self.backgroundColor = [UIColor clearColor];
+    self.titleLabel.font = textFont;
     if (self.style == SuperUIButtonStyleRect)
     {
         CGRect box = CGRectInset(self.bounds, self.insetSize, self.insetSize);
@@ -126,61 +183,7 @@
     {
         self.backgroundColor = bgColor;
     }
-    self.titleLabel.font = textFont;
     [super drawRect:rect];
-    if (self.img)
-    {
-        if (self.imgPos == SuperUIButtonImgPosCenter)
-        {
-            CGSize imageSize = self.img.size;
-            [self.img drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
-        }
-        if (self.imgPos == SuperUIButtonImgPosCenterFill)
-        {
-            CGSize imageSize = self.img.size;
-            UIImage *fitImage = [ImgUtil reize:self.img scaledTosize:self.bounds.size];
-            imageSize = fitImage.size;
-            imageSize = CGSizeMake(fitImage.size.width - self.insetSize * 2, fitImage.size.height - self.insetSize * 2);
-            [fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
-        }
-        if (self.imgPos == SuperUIButtonImgPosCenterFit)
-        {
-            CGSize imageSize = self.img.size;
-            UIImage *fitImage = [self.img imageByScalingProportionallyToSize:self.bounds.size];
-            imageSize = fitImage.size;
-            imageSize = CGSizeMake(fitImage.size.width - self.insetSize * 2, fitImage.size.height - self.insetSize * 2);
-            [fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
-        }
-        if (self.imgPos == SuperUIButtonImgPosCenterCrop)
-        {
-            CGSize imageSize = self.img.size;
-            UIImage *fitImage = [self.img imageByScalingAndCroppingForSize:self.bounds.size];
-            imageSize = fitImage.size;
-            imageSize = CGSizeMake(fitImage.size.width - self.insetSize * 2, fitImage.size.height - self.insetSize * 2);
-            NSLog(@"SuperUIButtonImgPosCenterCrop: %@ to %@", NSStringFromCGSize(self.img.size), NSStringFromCGSize(imageSize));
-            [fitImage drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
-        }
-        if (self.imgPos == SuperUIButtonImgPosUp)
-        {
-            CGSize imageSize = self.img.size;
-            self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, -imageSize.height, 0);
-            [self.img drawInRect:CGRectMake(self.bounds.size.width / 2 - imageSize.width / 2, self.bounds.size.height / 2 - imageSize.height, imageSize.width, imageSize.height)];
-        }
-        if (self.imgPos == SuperUIButtonImgPosLeft)
-        {
-            CGSize imageSize = self.img.size;
-            self.titleEdgeInsets = UIEdgeInsetsMake(0, imageSize.width, 0, 0);
-            [self.img drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-        }
-        if (self.imgPos == SuperUIButtonImgPosLeftOfText)
-        {
-            CGSize imageSize = self.img.size;
-            self.titleEdgeInsets = UIEdgeInsetsMake(0, imageSize.width + self.imgPad, 0, 0);
-            NSLog(@"self.titleLabel %@ %@", self.label, NSStringFromCGRect(self.titleLabel.frame));
-            CGFloat totalWidth = self.titleLabel.width + imageSize.width + self.imgPad;
-            [self.img drawInRect:CGRectMake(self.bounds.size.width / 2 - totalWidth / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height)];
-        }
-    }
     if (bedge && self.bedgeColor)
     {
         UIColor *color = self.bedgeColor;
@@ -191,7 +194,7 @@
         [color setFill];
         [ballBezierPath fill];
     }
-    if (self.highlighted == YES)
+    if (self.highlighted)
     {
         self.alpha = 0.6;
     }
