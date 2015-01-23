@@ -5,7 +5,9 @@
 #import "CalUtil.h"
 #import "ImgUtil.h"
 
-@implementation SuperUIButton
+@implementation SuperUIButton {
+    CAGradientLayer *gLayer;
+}
 @synthesize bgColor;
 @synthesize borderColor;
 @synthesize borderWidth;
@@ -38,6 +40,7 @@
 
 - (void)build
 {
+    self.clipsToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
     extra = [NSMutableDictionary dictionary];
     [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
@@ -93,6 +96,29 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    if (self.bgGradientColor)
+    {
+        if (!gLayer)
+        {
+            gLayer = [CAGradientLayer layer];
+            NSMutableArray *colors = [NSMutableArray new];
+            for (UIColor *color in self.bgGradientColor)
+            {
+                [colors addObject:(id)color.CGColor];
+            }
+            gLayer.colors = colors;
+            [self.layer insertSublayer:gLayer atIndex:0];
+        }
+        gLayer.frame = self.bounds;
+    }
+    else
+    {
+        if (gLayer)
+        {
+            [gLayer removeFromSuperlayer];
+            gLayer = nil;
+        }
+    }
     if (self.img)
     {
         self.imageView.image = self.img;
@@ -136,6 +162,19 @@
             CGFloat totalWidth = self.titleLabel.width + imageSize.width + self.imgPad;
             self.imageView.frame = CGRectMake(self.bounds.size.width / 2 - totalWidth / 2, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height);
         }
+        if (self.imgPos == SuperUIButtonImgPosRight)
+        {
+            CGSize imageSize = self.img.size;
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, imageSize.width, 0, 0);
+            self.imageView.frame = CGRectMake(self.width - imageSize.width, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height);
+        }
+        if (self.imgPos == SuperUIButtonImgPosRightOfText)
+        {
+            CGSize imageSize = self.img.size;
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, imageSize.width + self.imgPad - 4);
+            CGFloat totalWidth = self.titleLabel.width + imageSize.width + self.imgPad;
+            self.imageView.frame = CGRectMake(self.bounds.size.width / 2 - totalWidth / 2 + self.titleLabel.width + self.imgPad, self.bounds.size.height / 2 - imageSize.height / 2, imageSize.width, imageSize.height);
+        }
     }
     else
     {
@@ -152,6 +191,7 @@
     [self setTitleColor:textColor forState:UIControlStateNormal];
     self.backgroundColor = [UIColor clearColor];
     self.titleLabel.font = textFont;
+    self.layer.cornerRadius = cornerRadius;
     if (self.style == SuperUIButtonStyleRect)
     {
         CGRect box = CGRectInset(self.bounds, self.insetSize, self.insetSize);
@@ -207,13 +247,13 @@
 - (CGSize)calSize
 {
     CGFloat width = [CalUtil calWidth:self.label font:textFont width:MAXFLOAT min:0];
-    if (self.imgPos == SuperUIButtonImgPosLeft)
+    if (self.imgPos == SuperUIButtonImgPosLeft || self.imgPos == SuperUIButtonImgPosRight)
     {
         width += self.img.size.width;
     }
-    if (self.imgPos == SuperUIButtonImgPosLeftOfText)
+    if (self.imgPos == SuperUIButtonImgPosLeftOfText || self.imgPos == SuperUIButtonImgPosRightOfText)
     {
-        width += self.img.size.width + 4;
+        width += self.img.size.width + self.imgPad;
     }
     return CGSizeMake(width, self.frame.size.height);
 }

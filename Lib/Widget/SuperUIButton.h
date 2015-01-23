@@ -2,6 +2,7 @@
 
 
 typedef NS_ENUM (NSInteger, SuperUIButtonStyle) {
+    SuperUIButtonStyleNone,
     SuperUIButtonStyleRect,
     SuperUIButtonStyleHexagon,
     SuperUIButtonStyleCircle,
@@ -10,11 +11,13 @@ typedef NS_ENUM (NSInteger, SuperUIButtonStyle) {
 typedef NS_ENUM (NSInteger, SuperUIButtonImgPos) {
     SuperUIButtonImgPosUp,
     SuperUIButtonImgPosLeft,
+    SuperUIButtonImgPosRight,
     SuperUIButtonImgPosCenter,
     SuperUIButtonImgPosCenterFill,
     SuperUIButtonImgPosCenterFit,
     SuperUIButtonImgPosCenterCrop,
     SuperUIButtonImgPosLeftOfText,
+    SuperUIButtonImgPosRightOfText,
 };
 
 
@@ -24,6 +27,7 @@ typedef NS_ENUM (NSInteger, SuperUIButtonImgPos) {
 @property SuperUIButtonImgPos imgPos;
 @property CGFloat insetSize;
 @property UIColor *bgColor;
+@property NSArray *bgGradientColor;
 @property UIColor *borderColor;
 @property CGFloat borderWidth;
 @property CGFloat cornerRadius;
