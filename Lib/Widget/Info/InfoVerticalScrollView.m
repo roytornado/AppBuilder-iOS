@@ -1,7 +1,9 @@
 #import "InfoVerticalScrollView.h"
 #import "AppBuilder.h"
 
-@implementation InfoVerticalScrollView
+@implementation InfoVerticalScrollView {
+    CGFloat keyboardHeight;
+}
 
 + (void)initialize
 {
@@ -26,13 +28,34 @@
 
 - (void)baseClassInit
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sizeDidChanged) name:kInfoNotificationSizeDidChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sizeDidChanged:) name:kInfoNotificationSizeDidChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidFocus:) name:kInfoNotificationViewDidFocus object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChanged:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
-- (void)sizeDidChanged
+- (void)keyboardChanged:(NSNotification *)notification
 {
+    CGRect keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    BOOL isKeyboardShowing = keyboardFrame.origin.y < [[UIScreen mainScreen] bounds].size.height;
+    if (isKeyboardShowing)
+    {
+        keyboardHeight = keyboardFrame.size.height;
+    }
+    else
+    {
+        keyboardHeight = 0;
+    }
     [self setNeedsLayout];
+}
+
+- (void)sizeDidChanged:(NSNotification *)notification
+{
+    UIView *view = notification.object;
+    [self setNeedsLayout];
+    if (view)
+    {
+        [self setContentOffset:CGPointMake(0, view.frame.origin.y - 100) animated:YES];
+    }
 }
 
 - (void)viewDidFocus:(NSNotification *)notification
@@ -70,7 +93,7 @@
         }
     }
     curY += self.paddingBottom;
-
+    curY += keyboardHeight;
     self.contentSize = CGSizeMake(self.width, curY);
 }
 
